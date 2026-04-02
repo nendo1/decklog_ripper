@@ -1,5 +1,6 @@
-# Decklog ripper for bushinavi decks
+# Decklog Tools for Bushinavi decklogs
 
+# Decklog Ripper
 Decklog ripper for https://decklog-en.bushiroad.com 
 Works for english weiss decks. Probably others too but didnt test.
 
@@ -14,7 +15,7 @@ python decklog_ripper.py
 
 # Deck Aggregator 
 
-Takes multiple lists created by decklog ripper and averages them
+Takes multiple lists created by decklog ripper and averages them.
 
 ```
 python deck_aggregator.py <folder path> <desired name>
