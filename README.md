@@ -1,4 +1,5 @@
 # Decklog Tools for Bushinavi decklogs
+This repo will contain multiple random tools for retrieving and manipulating decklog data for weiss (possibly other bushi cardgames work too)
 
 # Decklog Ripper
 Decklog ripper for https://decklog-en.bushiroad.com 
