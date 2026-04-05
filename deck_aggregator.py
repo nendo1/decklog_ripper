@@ -1,6 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 from collections import Counter
+from pathlib import Path
 import sys
 
 base_path_lists = "./lists"
@@ -19,10 +20,16 @@ def loadlists(path):
             for line in lines[1:]:
                 card = line.split(" ")
                 cardcode = trim_cardcode_rarity(card[1])
+                
+                card_code_to_use = cardcode
+                if card_code_to_use not in cardname_dict:
+                    for key in cardname_dict.keys():
+                        if cardname_dict[key] == " ".join(card[2:]).strip():
+                            card_code_to_use = key
+                    if cardcode == card_code_to_use:
+                        cardname_dict[card_code_to_use] = " ".join(card[2:]).strip()
                 for _ in range(int(card[0])):
-                    allContainedcards.append(cardcode)
-                if cardcode not in cardname_dict:
-                    cardname_dict[cardcode] = " ".join(card[2:]).strip()
+                    allContainedcards.append(card_code_to_use)
     
     return allContainedcards, len(onlyfiles), cardname_dict
 
@@ -61,7 +68,7 @@ def main():
     quantity = list(c.values())
     average_quantity = [round(x/deckcounts,2) for x in quantity]
     final_list = create_agg_list(average_quantity,cards,cardname_dict)
-    name = sys.argv[2] if len(sys.argv) > 2 else cards[0].split("/")[0]
+    name = sys.argv[2] if len(sys.argv) > 2 else Path(folder_to_use).stem
     file_path = print_to_file(final_list, name)
     print("Success!")
     print("File can be found in: "+file_path)

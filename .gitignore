@@ -2,5 +2,7 @@ venv/
 .venv/
 env/
 ENV/git 
-wttripper.py
+ignore
 teatimerips/
+lists
+results
